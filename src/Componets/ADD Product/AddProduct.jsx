@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Container } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { addProductasync } from '../../Services/Action/Product Action/Productaction';
+import { useNavigate } from 'react-router';
 
 function AddProduct() {
 
@@ -13,23 +14,18 @@ function AddProduct() {
     produt_Img: '',
   }
   );
-
+  const navigate = useNavigate()
   // console.log(inputValue);
   const dispatch = useDispatch()
 
 
 
-  const hadlesubmit = (e) => {
+  const hadlesubmit = async (e) => {
     e.preventDefault();
-    dispatch(addProductasync(inputValue));
+    await dispatch(addProductasync(inputValue));
     console.log(inputValue);
-
-    setinputvalue({
-      produt_Name: '',
-      produt_Category: '',
-      produt_Price: '',
-      produt_Img: '',
-    })
+    navigate('/');
+    
   }
 
   const handlechange = (e) => {

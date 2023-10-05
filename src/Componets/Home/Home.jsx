@@ -10,15 +10,16 @@ import { EditProductasync, getAllAsyncData, removeProductasync } from '../../Ser
 function Home() {
 
     const productData = useSelector(state => state.Productreducer.products)
-    console.log(productData,"Prooooooooooo");
+    // console.log(productData,"Prooooooooooo");
 
     const [prodata , setprodata] = useState(productData)
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const handleRemove = (id) => {
-        dispatch(removeProductasync(id))
+    const handleRemove = async (id) => {
+        await dispatch(removeProductasync(id))
+        navigate('/')
       }
 
 

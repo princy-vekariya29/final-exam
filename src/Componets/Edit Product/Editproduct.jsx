@@ -3,10 +3,13 @@ import { useState } from 'react';
 import { Container } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { addProductasync, updateProductasync } from '../../Services/Action/Product Action/Productaction';
+import { useNavigate } from 'react-router';
 
 function EditProduct() {
 
     const product = useSelector(state => state.Productreducer.product);
+
+    const navigate = useNavigate();
 
   
 const dispatch = useDispatch()
@@ -14,19 +17,14 @@ const [inputValue, setinputvalue] = useState(product);
 
 console.log(inputValue.id,"inputValue iddddddddd");
 
-const hadlesubmit = (e) => {
+const hadlesubmit = async (e) => {
   e.preventDefault();
-  dispatch(updateProductasync(inputValue.id,inputValue));
+  await dispatch(updateProductasync(inputValue.id,inputValue));
 
 
   console.log(inputValue);
 
-  setinputvalue({
-    produt_Name: '',
-    produt_Category: '',
-    produt_Price: '',
-    produt_Img: '',
-  })
+  navigate('/');
 }
 
 const handlechange = (e) => {

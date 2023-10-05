@@ -67,6 +67,7 @@ export const EditProductasync = (id) => {
 
     return async dispatch => {
         // let alldata = [];
+        console.log(id,"id");
    
 
         const docref = doc(db, "products", `${id}`);
